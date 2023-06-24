@@ -1,4 +1,7 @@
-import { useState } from 'react'
+import { useState } from 'react';
+import Todo from "./components/Todo";
+import "./App.css";
+import Todoform from './components/Todoform';
 
 function App() {
   const [todos, setTodos] = useState([
@@ -20,23 +23,18 @@ function App() {
       category: "Trabalho",
       isCompleted: false,
     },
-  ])
-  return <div className="app">
+  ]);
+  return (
+    <div className="app">
       <h1>Lista de tarefas</h1>
       <div className="todo-list">
-        {todos.map((todo)=>(
-          <div className="todo">
-            <div className="content"><p>{todo.text}</p>
-              <p className="category">({todo.category})</p>
-              </div>
-              <div>
-                <button>Completar</button>
-                <button>x</button>
-              </div>
-            </div>
+        {todos.map((todo) => (
+          <Todo todo={todo} />
         ))}
       </div>
+      <Todoform />
     </div>
+  );
 }
 
 export default App
